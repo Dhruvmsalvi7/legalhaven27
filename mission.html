@@ -27,8 +27,13 @@
       </button>
 
       <nav class="site-nav" id="primary-nav" aria-label="Primary">
-        <a href="about.html">About</a>
-        <a href="mission.html" aria-current="page">Mission</a>
+        <div class="nav-dropdown">
+          <button class="dropdown-trigger" type="button" aria-expanded="false" aria-controls="about-menu-mission">About Us</button>
+          <div class="dropdown-menu" id="about-menu-mission">
+            <a href="mission.html" aria-current="page">Mission</a>
+            <a href="about.html#our-team">Our Team</a>
+          </div>
+        </div>
         <a href="about.html#who-we-serve">Who We Serve</a>
         <a href="services.html">Services</a>
         <a class="btn btn-small" href="contact.html">Get Help</a>
@@ -49,7 +54,7 @@
       </div>
     </section>
 
-    <section class="mission section-light">
+    <section class="mission section-light" id="mission">
       <div class="container mission-grid">
         <article class="mission-card reveal">
           <h2>Our Mission</h2>

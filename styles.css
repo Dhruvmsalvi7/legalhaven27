@@ -117,6 +117,63 @@ a {
   color: #2d3750;
 }
 
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-trigger {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dropdown-trigger::after {
+  content: " \25BE";
+  font-size: 0.78rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 180px;
+  background: #ffffff;
+  border: 1px solid #d9dfed;
+  border-radius: 12px;
+  box-shadow: 0 18px 32px rgba(20, 32, 71, 0.15);
+  padding: 0.45rem;
+  display: grid;
+  gap: 0.15rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 45;
+}
+
+.dropdown-menu a {
+  padding: 0.6rem 0.7rem;
+  border-radius: 8px;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus-visible {
+  background: #edf3ff;
+  color: #0f56da;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu,
+.nav-dropdown.open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .site-nav a:hover,
 .site-nav a:focus-visible {
   color: #0f56da;
@@ -489,40 +546,61 @@ blockquote {
 
 .team-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
 .team-card {
+  position: relative;
+  overflow: hidden;
   border-radius: var(--radius-xl);
   border: 1px solid #dde2ef;
   background: #ffffff;
-  padding: 1rem;
+  padding: 0;
   box-shadow: 0 10px 25px rgba(16, 23, 46, 0.06);
-  display: grid;
-  grid-template-columns: 230px 1fr;
-  gap: 1rem;
-  align-items: start;
+  min-height: 430px;
 }
 
 .team-photo {
   width: 100%;
   height: 100%;
-  min-height: 240px;
+  min-height: 430px;
   object-fit: cover;
-  border-radius: 14px;
-  border: 1px solid #e2e6f2;
+  border-radius: 0;
+  border: 0;
   background: #eff3fb;
 }
 
+.team-overlay {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(9, 18, 41, 0.94), rgba(9, 18, 41, 0.86) 45%, rgba(9, 18, 41, 0));
+  color: #e9f0ff;
+}
+
 .team-copy h3 {
-  margin-bottom: 0.7rem;
-  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  margin-bottom: 0;
+  font-size: clamp(1.05rem, 1.7vw, 1.25rem);
 }
 
 .team-copy p {
   margin: 0;
-  color: #4f5d7c;
+  color: #d7e3ff;
+}
+
+.team-bio {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.35s ease, margin-top 0.35s ease;
+}
+
+.team-card:hover .team-bio,
+.team-card:focus-within .team-bio {
+  max-height: 280px;
+  opacity: 1;
+  margin-top: 0.65rem;
 }
 
 .mission {
@@ -756,12 +834,12 @@ blockquote {
     grid-template-columns: 1fr;
   }
 
-  .team-card {
-    grid-template-columns: 1fr;
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .team-photo {
-    min-height: 300px;
+    min-height: 360px;
     max-height: 420px;
   }
 
@@ -808,6 +886,37 @@ blockquote {
     border-radius: 10px;
   }
 
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .dropdown-trigger {
+    width: 100%;
+    text-align: left;
+    padding: 0.7rem;
+    border-radius: 10px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    min-width: 0;
+    border: 0;
+    box-shadow: none;
+    padding: 0.2rem 0 0.1rem;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+  }
+
+  .nav-dropdown.open .dropdown-menu {
+    display: grid;
+  }
+
+  .dropdown-menu a {
+    padding-left: 1.3rem;
+  }
+
   .site-nav a:hover,
   .site-nav a:focus-visible {
     background: #edf3ff;
@@ -837,6 +946,16 @@ blockquote {
   .team-photo {
     min-height: 240px;
     max-height: 320px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-bio {
+    max-height: 280px;
+    opacity: 1;
+    margin-top: 0.65rem;
   }
 
   .cta-panel .btn {

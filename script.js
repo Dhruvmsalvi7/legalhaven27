@@ -1,6 +1,7 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const siteNav = document.querySelector('.site-nav');
 const navLinks = document.querySelectorAll('.site-nav a');
+const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
 const revealEls = document.querySelectorAll('.reveal');
 const yearEl = document.getElementById('year');
 const form = document.querySelector('.contact-form');
@@ -19,6 +20,50 @@ if (menuToggle && siteNav) {
     link.addEventListener('click', () => {
       siteNav.classList.remove('open');
       menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+if (dropdownTriggers.length > 0) {
+  dropdownTriggers.forEach((trigger) => {
+    const dropdown = trigger.closest('.nav-dropdown');
+    if (!dropdown) {
+      return;
+    }
+
+    trigger.addEventListener('click', () => {
+      const isOpen = dropdown.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', String(isOpen));
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    dropdownTriggers.forEach((trigger) => {
+      const dropdown = trigger.closest('.nav-dropdown');
+      if (!dropdown) {
+        return;
+      }
+
+      if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') {
+      return;
+    }
+
+    dropdownTriggers.forEach((trigger) => {
+      const dropdown = trigger.closest('.nav-dropdown');
+      if (!dropdown) {
+        return;
+      }
+
+      dropdown.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
     });
   });
 }
