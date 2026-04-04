@@ -94,11 +94,13 @@ a {
 }
 
 .brand-mark {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   display: block;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 2px;
+  background: #a7d5e4;
 }
 
 .brand-text {
