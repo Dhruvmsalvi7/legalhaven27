@@ -96,12 +96,9 @@ a {
 .brand-mark {
   width: 34px;
   height: 34px;
-  display: grid;
-  place-items: center;
+  display: block;
   border-radius: 50%;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  color: #ffffff;
-  font-size: 0.75rem;
+  object-fit: cover;
 }
 
 .brand-text {
@@ -121,6 +118,15 @@ a {
   position: relative;
 }
 
+.nav-dropdown::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 12px;
+}
+
 .dropdown-trigger {
   border: 0;
   background: transparent;
@@ -138,7 +144,7 @@ a {
 
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 2px);
   left: 0;
   min-width: 180px;
   background: #ffffff;
@@ -888,6 +894,10 @@ blockquote {
 
   .nav-dropdown {
     width: 100%;
+  }
+
+  .nav-dropdown::after {
+    display: none;
   }
 
   .dropdown-trigger {
