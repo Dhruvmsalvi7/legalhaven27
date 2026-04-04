@@ -575,6 +575,10 @@ blockquote {
   background: #eff3fb;
 }
 
+.team-photo-dhruv {
+  object-position: center 20%;
+}
+
 .team-copy {
   padding: 1rem 1rem 0;
 }
@@ -938,6 +942,10 @@ blockquote {
 
   .team-photo {
     height: 260px;
+  }
+
+  .team-photo-dhruv {
+    object-position: center 14%;
   }
 
   .team-grid {
