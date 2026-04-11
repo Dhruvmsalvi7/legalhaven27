@@ -649,6 +649,19 @@ blockquote {
   letter-spacing: 0.01em;
 }
 
+.team-social-tab a.social-icon.instagram svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+}
+
+.team-social-tab a.social-icon.instagram .insta-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
 .team-social-tab a.social-icon.linkedin {
   font-size: 0.82rem;
   text-transform: lowercase;
