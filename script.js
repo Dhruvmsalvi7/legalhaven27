@@ -5,7 +5,6 @@ const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
 const revealEls = document.querySelectorAll('.reveal');
 const yearEl = document.getElementById('year');
 const forms = document.querySelectorAll('.contact-form');
-const teamPhotoTriggers = document.querySelectorAll('.team-photo-trigger');
 
 const contactRecipients = [
   'vianicavillarin@gmail.com',
@@ -39,21 +38,6 @@ const buildContactMailto = (formEl) => {
   );
 
   return `mailto:${contactRecipients.join(',')}?subject=${subject}&body=${body}`;
-};
-
-const closeTeamSocialTabs = (exceptCard = null) => {
-  const openCards = document.querySelectorAll('.team-card.social-open');
-  openCards.forEach((card) => {
-    if (exceptCard && card === exceptCard) {
-      return;
-    }
-
-    card.classList.remove('social-open');
-    const trigger = card.querySelector('.team-photo-trigger');
-    if (trigger) {
-      trigger.setAttribute('aria-expanded', 'false');
-    }
-  });
 };
 
 if (yearEl) {
@@ -154,35 +138,5 @@ if (forms.length > 0) {
         form.appendChild(note);
       }
     });
-  });
-}
-
-if (teamPhotoTriggers.length > 0) {
-  teamPhotoTriggers.forEach((trigger) => {
-    trigger.addEventListener('click', () => {
-      const card = trigger.closest('.team-card');
-      if (!card) {
-        return;
-      }
-
-      const willOpen = !card.classList.contains('social-open');
-      closeTeamSocialTabs(card);
-
-      card.classList.toggle('social-open', willOpen);
-      trigger.setAttribute('aria-expanded', String(willOpen));
-    });
-  });
-
-  document.addEventListener('click', (event) => {
-    const clickedInsideTeamCard = event.target.closest('.team-card');
-    if (!clickedInsideTeamCard) {
-      closeTeamSocialTabs();
-    }
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeTeamSocialTabs();
-    }
   });
 }

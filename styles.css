@@ -619,23 +619,46 @@ blockquote {
   transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
+.team-card:hover .team-social-tab,
+.team-card:focus-within .team-social-tab,
 .team-card.social-open .team-social-tab {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.team-social-tab a {
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: #1d2f56;
+.team-social-tab {
+  justify-content: center;
 }
 
-.team-social-tab a:hover,
-.team-social-tab a:focus-visible {
+.team-social-tab a.social-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #c9d4ef;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #1d2f56;
+  background: #ffffff;
+}
+
+.team-social-tab a.social-icon.instagram {
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+.team-social-tab a.social-icon.linkedin {
+  font-size: 0.82rem;
+  text-transform: lowercase;
+}
+
+.team-social-tab a.social-icon:hover,
+.team-social-tab a.social-icon:focus-visible {
   color: #114dc7;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  border-color: #9bb6f8;
+  background: #eef4ff;
 }
 
 .team-copy {
