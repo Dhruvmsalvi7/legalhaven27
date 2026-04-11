@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Read LegalHaven's mission statement and guiding commitments to equitable legal access." />
-  <title>Mission | Legal Haven</title>
+  <meta name="description" content="Read LegalHaven articles on legal access, immigration policy, and community justice." />
+  <title>Articles | Legal Haven</title>
   <link rel="icon" type="image/jpeg" href="legallogo_withouttext2.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,14 +29,14 @@
 
       <nav class="site-nav" id="primary-nav" aria-label="Primary">
         <div class="nav-dropdown">
-          <button class="dropdown-trigger" type="button" aria-expanded="false" aria-controls="about-menu-mission">About Us</button>
-          <div class="dropdown-menu" id="about-menu-mission">
-            <a href="mission.html" aria-current="page">Mission</a>
+          <button class="dropdown-trigger" type="button" aria-expanded="false" aria-controls="about-menu-articles">About Us</button>
+          <div class="dropdown-menu" id="about-menu-articles">
+            <a href="mission.html">Mission</a>
             <a href="about.html#our-team">Our Team</a>
           </div>
         </div>
         <a href="about.html#who-we-serve">Who We Serve</a>
-        <a href="articles.html">Articles</a>
+        <a href="articles.html" aria-current="page">Articles</a>
         <a class="btn btn-small" href="contact.html">Get Help</a>
       </nav>
     </div>
@@ -45,40 +45,37 @@
   <main id="main-content">
     <section class="page-hero section-dark">
       <div class="container page-hero-inner reveal">
-        <p class="eyebrow">Mission Statement</p>
-        <h1>Justice Should Be Accessible To Everyone.</h1>
+        <p class="eyebrow">Articles</p>
+        <h1>Legal Insight For Real-World Challenges.</h1>
         <p>
-          LegalHaven exists to ensure that no one is denied legal help because of where they are from,
-          their income, or their story. We are committed to bridging underserved communities to trusted,
-          understandable, and actionable legal resources.
+          Stories, policy updates, and explainers focused on legal access and community impact.
         </p>
       </div>
     </section>
 
-    <section class="mission section-light" id="mission">
-      <div class="container mission-grid">
-        <article class="mission-card reveal">
-          <h2>Our Mission</h2>
-          <p>
-            LegalHaven is dedicated to expanding access to legal support for marginalized and underserved
-            communities by providing clear guidance, community-based outreach, and pathways to trusted legal resources.
-          </p>
-          <p>
-            We believe legal support should be compassionate, practical, and available to every person,
-            regardless of financial status or background.
-          </p>
-        </article>
-
-        <article class="mission-card reveal">
-          <h2>Our Commitments</h2>
-          <ul>
-            <li>Center dignity, confidentiality, and respect in every interaction</li>
-            <li>Use clear language and practical next steps to reduce confusion</li>
-            <li>Build partnerships that strengthen community-based legal pathways</li>
-            <li>Focus resources where legal barriers are highest and support is lowest</li>
-          </ul>
-          <a class="btn btn-primary" href="contact.html">Request Support</a>
-        </article>
+    <section class="articles-page section-light">
+      <div class="container">
+        <div class="article-grid">
+          <article class="article-card reveal">
+            <a href="article-doj-program.html" class="article-card-link" aria-label="Read article by Patrick Wong">
+              <img src="depofjus.jpg" alt="Department of Justice building" class="article-card-image" />
+              <div class="article-card-body">
+                <h2>The U.S. Department of Justice (DOJ) has gutted a 60-year-old program helping immigrants receive legal representation.</h2>
+                <p>
+                  The Department of Justice has recently made internal changes that gutted the longstanding Recognition and Accreditation Program, which was designed to help low-income immigrants access affordable legal representation.
+                </p>
+                <div class="article-card-meta" aria-label="Article metadata">
+                  <div class="article-author">
+                    <img src="patrick.png" alt="Patrick Wong" class="article-author-photo" />
+                    <span>Patrick Wong</span>
+                  </div>
+                  <span>April 10, 2026</span>
+                  <span>8 min read</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        </div>
       </div>
     </section>
   </main>
@@ -89,7 +86,7 @@
       <div class="footer-links">
         <a href="about.html">About</a>
         <a href="mission.html">Mission</a>
-        <a href="articles.html">Articles</a>
+        <a href="articles.html" aria-current="page">Articles</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
