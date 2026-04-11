@@ -4,7 +4,57 @@ const navLinks = document.querySelectorAll('.site-nav a');
 const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
 const revealEls = document.querySelectorAll('.reveal');
 const yearEl = document.getElementById('year');
-const form = document.querySelector('.contact-form');
+const forms = document.querySelectorAll('.contact-form');
+const teamPhotoTriggers = document.querySelectorAll('.team-photo-trigger');
+
+const contactRecipients = [
+  'vianicavillarin@gmail.com',
+  'dhruvmsalvi@gmail.com'
+];
+
+const toTitleCase = (value) =>
+  value
+    .split(' ')
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+const buildContactMailto = (formEl) => {
+  const formData = new FormData(formEl);
+  const details = [];
+
+  formData.forEach((value, key) => {
+    const cleanedValue = String(value).trim();
+    if (!cleanedValue) {
+      return;
+    }
+
+    const label = toTitleCase(key.replace(/[-_]+/g, ' '));
+    details.push(`${label}: ${cleanedValue}`);
+  });
+
+  const subject = encodeURIComponent('LegalHaven contact request');
+  const body = encodeURIComponent(
+    `Hello LegalHaven team,\n\nPlease see my contact request details below:\n\n${details.join('\n')}\n`
+  );
+
+  return `mailto:${contactRecipients.join(',')}?subject=${subject}&body=${body}`;
+};
+
+const closeTeamSocialTabs = (exceptCard = null) => {
+  const openCards = document.querySelectorAll('.team-card.social-open');
+  openCards.forEach((card) => {
+    if (exceptCard && card === exceptCard) {
+      return;
+    }
+
+    card.classList.remove('social-open');
+    const trigger = card.querySelector('.team-photo-trigger');
+    if (trigger) {
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+};
 
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
@@ -90,21 +140,49 @@ if ('IntersectionObserver' in window) {
   revealEls.forEach((el) => el.classList.add('in-view'));
 }
 
-if (form) {
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
+if (forms.length > 0) {
+  forms.forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
 
-    const submitButton = form.querySelector('button[type="submit"]');
-    if (submitButton) {
-      submitButton.textContent = 'Request Sent';
-      submitButton.disabled = true;
+      window.location.href = buildContactMailto(form);
+
+      if (!form.querySelector('.submit-note')) {
+        const note = document.createElement('p');
+        note.className = 'form-note submit-note';
+        note.textContent = 'Your email app should open with your message prefilled.';
+        form.appendChild(note);
+      }
+    });
+  });
+}
+
+if (teamPhotoTriggers.length > 0) {
+  teamPhotoTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const card = trigger.closest('.team-card');
+      if (!card) {
+        return;
+      }
+
+      const willOpen = !card.classList.contains('social-open');
+      closeTeamSocialTabs(card);
+
+      card.classList.toggle('social-open', willOpen);
+      trigger.setAttribute('aria-expanded', String(willOpen));
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    const clickedInsideTeamCard = event.target.closest('.team-card');
+    if (!clickedInsideTeamCard) {
+      closeTeamSocialTabs();
     }
+  });
 
-    if (!form.querySelector('.submit-note')) {
-      const note = document.createElement('p');
-      note.className = 'form-note submit-note';
-      note.textContent = 'Thank you. Our team will contact you shortly.';
-      form.appendChild(note);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeTeamSocialTabs();
     }
   });
 }
