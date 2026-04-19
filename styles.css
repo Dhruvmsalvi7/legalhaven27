@@ -933,12 +933,12 @@ blockquote {
 }
 
 .meenu-card-image {
-  object-position: center 34%;
+  object-position: center 20%;
 }
 
 .meenu-hero-image {
-  object-position: center 36%;
-  height: min(520px, 56vw);
+  object-position: center 18%;
+  height: min(460px, 50vw);
 }
 
 .article-card-body {
@@ -1200,8 +1200,8 @@ blockquote {
   }
 
   .meenu-hero-image {
-    height: 320px;
-    object-position: center 38%;
+    height: 290px;
+    object-position: center 22%;
   }
 
   .team-photo {
