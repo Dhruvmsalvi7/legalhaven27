@@ -599,6 +599,10 @@ blockquote {
   object-position: center 20%;
 }
 
+.noah-photo-shift {
+  object-position: center 30%;
+}
+
 .team-social-tab {
   position: absolute;
   left: 0.8rem;
@@ -928,6 +932,15 @@ blockquote {
   background: #eff3fb;
 }
 
+.meenu-card-image {
+  object-position: center 34%;
+}
+
+.meenu-hero-image {
+  object-position: center 36%;
+  height: min(520px, 56vw);
+}
+
 .article-card-body {
   padding: 1.2rem;
 }
@@ -956,6 +969,16 @@ blockquote {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
+}
+
+.article-author-photos {
+  display: inline-flex;
+  align-items: center;
+}
+
+.article-author-photos .article-author-photo + .article-author-photo {
+  margin-left: -14px;
+  border: 2px solid #ffffff;
 }
 
 .article-author-photo {
@@ -1174,6 +1197,11 @@ blockquote {
 
   .article-hero-image {
     height: 250px;
+  }
+
+  .meenu-hero-image {
+    height: 320px;
+    object-position: center 38%;
   }
 
   .team-photo {
