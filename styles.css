@@ -558,6 +558,25 @@ blockquote {
   gap: 1rem;
 }
 
+.team-grid-members {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.team-subtitle {
+  margin: 0 0 0.85rem;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.84rem;
+  color: #2e3f66;
+}
+
+.team-divider {
+  border: 0;
+  border-top: 1px solid #d9dff0;
+  margin: 1.35rem 0 1.1rem;
+}
+
 .team-card {
   border-radius: var(--radius-xl);
   border: 1px solid #dde2ef;
