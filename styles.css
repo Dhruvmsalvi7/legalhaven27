@@ -941,6 +941,19 @@ blockquote {
     var(--bg-paper);
 }
 
+.articles-promo {
+  margin-bottom: 1.4rem;
+}
+
+.articles-promo h2 {
+  max-width: 20ch;
+}
+
+.articles-promo p {
+  max-width: 68ch;
+  color: #4f5d7c;
+}
+
 .article-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
