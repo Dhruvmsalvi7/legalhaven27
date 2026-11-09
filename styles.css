@@ -566,6 +566,11 @@ blockquote {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.team-grid.team-grid-board-solo {
+  grid-template-columns: minmax(0, 420px);
+  justify-content: center;
+}
+
 .team-grid-board + .team-grid-board {
   margin-top: 1rem;
 }
@@ -729,6 +734,68 @@ blockquote {
 
 .team-bio {
   display: block;
+}
+
+/*
+  Elongated layout for board members only.
+  Toggle: add/remove the `team-horizontal` class on the
+  <section class="team ..."> element in about.html.
+  Team members below keep the standard card-grid blocks.
+*/
+.team-horizontal .team-grid-board {
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+.team-horizontal .team-grid-board .team-card {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  align-items: stretch;
+  overflow: hidden;
+  padding: 0;
+}
+
+.team-horizontal .team-grid-board .team-photo-wrap {
+  height: 100%;
+}
+
+.team-horizontal .team-grid-board .team-photo-trigger {
+  height: 100%;
+}
+
+.team-horizontal .team-grid-board .team-photo {
+  height: 100%;
+  min-height: 300px;
+  border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+}
+
+.team-horizontal .team-grid-board .team-copy {
+  padding: 1.8rem 2rem;
+  align-self: center;
+}
+
+.team-horizontal .team-grid-board .team-copy h3 {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+}
+
+.team-horizontal .team-grid-board .team-bio {
+  max-width: 62ch;
+}
+
+@media (max-width: 760px) {
+  .team-horizontal .team-grid-board .team-card {
+    grid-template-columns: 1fr;
+  }
+
+  .team-horizontal .team-grid-board .team-photo {
+    min-height: 0;
+    height: 300px;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  }
+
+  .team-horizontal .team-grid-board .team-copy {
+    padding: 1.1rem 1.2rem 1.4rem;
+  }
 }
 
 .mission {
