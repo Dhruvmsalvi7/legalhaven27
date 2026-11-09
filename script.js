@@ -124,6 +124,32 @@ if ('IntersectionObserver' in window) {
   revealEls.forEach((el) => el.classList.add('in-view'));
 }
 
+// Hash-free section navigation: links with data-scroll-target navigate to the
+// page normally (no #fragment in the URL) and the destination page scrolls to
+// the stored section on load.
+document.querySelectorAll('a[data-scroll-target]').forEach((link) => {
+  link.addEventListener('click', () => {
+    try {
+      sessionStorage.setItem('scrollTarget', link.dataset.scrollTarget);
+    } catch (err) {
+      /* storage unavailable: link still navigates normally */
+    }
+  });
+});
+
+try {
+  const storedTarget = sessionStorage.getItem('scrollTarget');
+  if (storedTarget) {
+    sessionStorage.removeItem('scrollTarget');
+    const targetEl = document.getElementById(storedTarget);
+    if (targetEl) {
+      targetEl.scrollIntoView();
+    }
+  }
+} catch (err) {
+  /* storage unavailable */
+}
+
 if (forms.length > 0) {
   forms.forEach((form) => {
     form.addEventListener('submit', (event) => {
